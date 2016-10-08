@@ -1,14 +1,20 @@
 #!/usr/bin/make -f
 
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
+# export DH_VERBOSE=1
 
-clean:
-	make -C utils clean
-	dh clean
+UPSTREAM_GIT := https://github.com/kanaka/noVNC.git
 
-build:
-	make -C utils rebind.so
+include /usr/share/openstack-pkg-tools/pkgos.make
 
 %:
-	dh ${@}
+	dh $@ --with python2
+
+override_dh_clean:
+	make -C utils clean
+	dh_clean
+
+override_dh_fixperms:
+	dh_fixperms
+	rm -rf $(CURDIR)/debian/novnc/usr/share/novnc/utils/Makefile
+	rm -f $(CURDIR)/debian/novnc/usr/share/novnc/include/web-socket-js/swfobject.js
+	ln -s ../../../javascript/swfobject/swfobject.js $(CURDIR)/debian/novnc/usr/share/novnc/include/web-socket-js/swfobject.js
