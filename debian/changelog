@@ -1,3 +1,10 @@
+novnc (1:0.4+dfsg+1+20131010+gitf68af8af3d-6+deb9u1) stretch-security; urgency=high
+
+  * Non-maintainer upload by the Debian LTS team.
+  * Fix CVE-2017-18635: XSS vulnerability.
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Mon, 27 Dec 2021 08:46:33 +0530
+
 novnc (1:0.4+dfsg+1+20131010+gitf68af8af3d-6) unstable; urgency=medium
 
   [ Ondřej Nový ]
